@@ -20,8 +20,8 @@ CLEANUP_PID=$SEMAPHORE_DIR/transcode.cleanup.pid
 # Set the path/name of the configuration file
 #
 conf="$CONFIG_DIR/ffmpeg.wrap.conf"
-if [ ! -f $conf ]; then
-    cp $SCRIPT_DIR/ffmpeg.wrap.conf $CONFIG_DIR
+if [ ! -f "$CONFIG_DIR/ffmpeg.wrap.conf" ]; then
+    cp $SCRIPT_DIR/ffmpeg.wrap.conf $conf
 fi
 # prop - reads value of a propery from the configuration file
 # use $(prop 'property.name') to read properties from a key=value lines in file
