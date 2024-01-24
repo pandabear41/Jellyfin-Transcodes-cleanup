@@ -1,7 +1,7 @@
 #!/bin/bash
 # ! /bin/sh
 
-SCRIPT_DIR=/config/ffmpeg
+SCRIPT_DIR=/jellyfin/cleanup-scripts
 TRANSCODES_DIR=/config/transcodes
 SEMAPHORE_DIR=/config/semaphore # use RAM drive for FFMPEG transcoding PID and PAUSE files
 LOG_DIR=/config/log

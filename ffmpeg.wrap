@@ -3,9 +3,10 @@
 #description     :  This script is a wrapper for Jellyfin ffmpeg
 
 FFMPEG_DIR=/usr/lib/jellyfin-ffmpeg # non-Docker server path to FFMPEG usually is /usr/bin/ffmpeg
-SCRIPT_DIR=/config/ffmpeg
+SCRIPT_DIR=/jellyfin/cleanup-scripts
 TRANSCODES_DIR=/config/transcodes
 CLEANUP_PROG=$SCRIPT_DIR/transcode.cleanup.sh
+CONFIG_DIR=/config/ffmpeg
 
 SEMAPHORE_DIR=/config/semaphore # use RAM drive for FFMPEG transcoding PID and PAUSE files
 LOG_DIR=/config/log
@@ -18,7 +19,10 @@ CLEANUP_PID=$SEMAPHORE_DIR/transcode.cleanup.pid
 #
 # Set the path/name of the configuration file
 #
-conf="$SCRIPT_DIR/ffmpeg.wrap.conf"
+conf="$CONFIG_DIR/ffmpeg.wrap.conf"
+if [ ! -f $conf ]; then
+    cp $SCRIPT_DIR/ffmpeg.wrap.conf $CONFIG_DIR
+fi
 # prop - reads value of a propery from the configuration file
 # use $(prop 'property.name') to read properties from a key=value lines in file
 function prop {
