@@ -19,7 +19,11 @@ CLEANUP_PID=$SEMAPHORE_DIR/transcode.cleanup.pid
 #
 # Set the path/name of the configuration file
 #
+
 conf="$CONFIG_DIR/ffmpeg.wrap.conf"
+if [ ! -d "CONFIG_DIR" ]; then
+   mkdir -p $CONFIG_DIR
+fi
 if [ ! -f "$CONFIG_DIR/ffmpeg.wrap.conf" ]; then
     cp $SCRIPT_DIR/ffmpeg.wrap.conf $conf
 fi
