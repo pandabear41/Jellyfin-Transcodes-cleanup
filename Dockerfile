@@ -10,5 +10,7 @@ RUN apt update \
   && ln -sf /jellyfin/cleanup-scripts/ffmpeg.wrap /usr/lib/jellyfin-ffmpeg/ffmpeg.wrap \
   && ln -sf /usr/lib/jellyfin-ffmpeg/ffprobe /usr/lib/jellyfin-ffmpeg/ffprobe.wrap 
 
+WORKDIR /repo
+
 ENTRYPOINT [ "./jellyfin/jellyfin", \
              "--ffmpeg", "/usr/lib/jellyfin-ffmpeg/ffmpeg.wrap" ]
